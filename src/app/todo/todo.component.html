@@ -1,0 +1,19 @@
+<div class="app-container">
+    <h1>To-Do</h1>
+    <p>A place to store your to-do's</p>
+    <input #filterInput [(ngModel)]="filterValue" type="text" placeholder="Filter your to-do's"> 
+    <ol>
+        <li *ngFor="let item of (toDoList | taskFilter: filterValue); let i = index">
+            <button *ngIf="!item.completed" class="complete-btn" (click)='item.completed = true'>Complete</button>
+            <button *ngIf="!item.completed" class="complete-btn edit-btn">Edit</button>
+            <span class="listIndex">{{i + 1}}.</span>
+            <span [ngClass]="{'completed': item.completed}" class="item-task"> {{ item.task }} </span>
+            <div class="x-btn-container">
+                <button (click)='removeItem(i)' class="x-btn">X</button>
+            </div>
+        </li>
+    </ol>
+    <input [(ngModel)]="addToDo" (keyup.enter)="addItem()" type="text" placeholder="Add your to-do"> 
+    <button (click)="addItem()" id="add-btn">Add</button>
+    <!-- <button (click)="logger()">console.log()</button> -->
+</div>
