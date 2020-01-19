@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { IToDo } from './todo.interface'
 
 @Pipe({
-    name: "taskFilter"
+    name: "taskFilter",
+    pure: false
 })
 
 export class filterPipe implements PipeTransform {
