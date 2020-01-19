@@ -6,10 +6,11 @@ import { IToDo } from './todo.interface'
 })
 
 export class filterPipe implements PipeTransform {
-    transform(value: IToDo[], filterValue: string): IToDo[] {
+    transform(todoList: IToDo[], filterValue: string): IToDo[] {
         if (!filterValue) {
-            return value;
+            return todoList;
         }
-        return value.filter(i => !i.task.toLowerCase().indexOf(filterValue.toLowerCase()));
+        todoList.map((item, index) => item.id = index)
+        return todoList.filter(listItem => !listItem.task.toLowerCase().indexOf(filterValue.toLowerCase()));
     };
 };

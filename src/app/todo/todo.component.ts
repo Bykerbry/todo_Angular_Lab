@@ -16,27 +16,49 @@ export class TodoComponent implements OnInit {
 
   constructor() { 
     this.toDoList = [
-      { task: "Grocery Shopping", completed: false },
-      { task: "Cook Dinner", completed: false },
-      { task: "Let Dog Out", completed: false },
-      { task: "Brush Teeth", completed: false }
+      { task: "Grocery Shopping", completed: false, beingEdited: false },
+      { task: "Cook Dinner", completed: false, beingEdited: false  },
+      { task: "Let Dog Out", completed: false, beingEdited: false  },
+      { task: "Brush Teeth", completed: false, beingEdited: false  }
     ]
   };
 
-  addItem(){
-    this.toDoList.push({ task: this.addToDo, completed: false });
+  addTask(){
+    this.toDoList.push({ task: this.addToDo, completed: false, beingEdited: false  });
     this.addToDo = '';
   };
 
-  removeItem(i: number) {
-    this.toDoList.splice(i, 1);
+  removeTask(i: number, filterValue: string, task: IToDo) {
+    if (filterValue) {
+      this.toDoList.splice(task.id, 1);
+    } else {
+      this.toDoList.splice(i, 1);
+    }
   };
 
-  // logger() {
-  //   console.log(this.toDoList);
-  // }
+  editTask(e: Event, task: IToDo) {
+    task.beingEdited = true;
+    let target = e.target as HTMLElement;
+    target.blur();
+  }
+
+  updateTask(newText: string, task: IToDo) {
+    task.task = newText;
+    newText = '';
+    task.beingEdited = false;
+  }
+
+  logger() {
+    console.log(this.toDoList);
+  }
 
   ngOnInit() {
   }
 
 }
+
+/*
+To-Do
+  1. Figure out how to update DOM while filter is active
+  2. Separate into Components
+*/

@@ -26,7 +26,7 @@ li {
     justify-content: flex-start;
 }
 
-.complete-btn {
+.btn {
     padding: .25rem;
     background-color: #FFFFFF99;
     color: #000;
@@ -41,6 +41,9 @@ li {
 .listIndex {
     margin-right: 1rem;
 }
+.task-text{
+    white-space: nowrap;
+}
 .x-btn-container {
     display: flex;
     flex: 1;
@@ -54,11 +57,16 @@ li {
     background-color: #FFFFFF00;
 }
 
-.complete-btn:focus,
-.complete-btn:hover,
+.btn:focus,
+.btn:hover,
 .x-btn:focus,
 .x-btn:hover {
     background-color: #DDD;
+}
+
+.update-btn {
+    margin-left: 1rem;
+    margin-right: 0;
 }
 
 #add-btn {
