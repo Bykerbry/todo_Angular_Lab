@@ -3,9 +3,11 @@ import { IToDo } from './todo.interface'
 
 @Component({
   selector: 'app-todo',
+  providers: [],
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
+
 export class TodoComponent implements OnInit {
 
   @ViewChild('filterInput', {static: false}) filterInput: any;
@@ -38,7 +40,7 @@ export class TodoComponent implements OnInit {
 
   editTask(e: Event, task: IToDo) {
     task.beingEdited = true;
-    let target = e.target as HTMLElement;
+    let target = e.target as HTMLButtonElement;
     target.blur();
   }
 
@@ -48,17 +50,7 @@ export class TodoComponent implements OnInit {
     task.beingEdited = false;
   }
 
-  logger() {
-    console.log(this.toDoList);
-  }
-
   ngOnInit() {
   }
 
 }
-
-/*
-To-Do
-  1. Figure out how to update DOM while filter is active
-  2. Separate into Components
-*/

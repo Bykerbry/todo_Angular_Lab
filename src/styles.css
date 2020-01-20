@@ -1,4 +1,5 @@
 html, body {
     margin: 0;
     background-image: linear-gradient(to right, #ce93d8, #ff8a65);
+    box-sizing: border-box;
 }

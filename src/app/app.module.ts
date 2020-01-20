@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import { filterPipe } from './todo/todo.pipe.filter'
+import { filterPipe } from './todo/todo.pipe.filter';
+import { selectTextDirective } from './select.text.directive'
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
-    filterPipe
+    filterPipe,
+    selectTextDirective
   ],
   imports: [
     BrowserModule,

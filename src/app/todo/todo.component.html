@@ -9,12 +9,11 @@
                 <button (click)="editTask($event, task)" [disabled]="task.beingEdited" *ngIf="!task.completed" class="btn edit-btn">Edit</button>
                 <span class="listIndex">{{i + 1}}.</span>
                 <span [ngClass]="{'completed': task.completed}" *ngIf="!task.beingEdited" class="task-text"> {{ task.task }} </span>
-                <input type="text" class="edit-input"
-                    *ngIf="task.beingEdited" 
-                    (keyup.enter)="updateTask(task.task, task)" 
+                <input type="text" class="edit-input" id="edit-input" selectText
+                    *ngIf="task.beingEdited"  
                     [ngModel]="task.task" 
                     (ngModelChange)="task.task = $event" 
-                    autofocus (focus)="$event.target.select()">
+                    (keyup.enter)="updateTask(task.task, task)">
                 <button *ngIf="task.beingEdited" class="btn update-btn" (click)="updateTask(task.task, task)">Update</button>
                 <div *ngIf="!task.beingEdited" class="x-btn-container">
                     <button (click)='removeTask(i, filterValue, task)' class="x-btn">X</button>
@@ -23,6 +22,5 @@
         </ol>
         <input [(ngModel)]="addToDo" (keyup.enter)="addTask()" type="text" placeholder="Add your to-do"> 
         <button (click)="addTask()" id="add-btn">Add</button>
-        <button (click)="logger()">console.log()</button>
     </div>
     
